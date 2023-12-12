@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <!-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> -->
+
+  <!-- <meta http-equiv="x-ua-compatible" content="ie=edge"> -->
+
+  <title>MapPrior</title>
+
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- mirror: F0%9F%AA%9E&lt -->
+
+  <link rel="stylesheet" type="text/css" href="./MapPrior_files/slick.css">
+  <link rel="stylesheet" type="text/css" href="./MapPrior_files/slick-theme.css">
+  <link rel="stylesheet" href="./MapPrior_files/bulma.min.css">
+  <link rel="stylesheet" href="./MapPrior_files/bulma-slider.min.css">
+  <link rel="stylesheet" href="./MapPrior_files/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./MapPrior_files/bootstrap.min.css">
+  <link rel="stylesheet" href="./MapPrior_files/font-awesome.min.css">
+  <link rel="stylesheet" href="./MapPrior_files/codemirror.min.css">
+  <link rel="stylesheet" href="./MapPrior_files/app.css">
+  <link rel="stylesheet" href="./MapPrior_files/index.css">
+  <link rel="stylesheet" href="./MapPrior_files/select.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+  <script src="./MapPrior_files/jquery.min.js"></script>
+  <script src="./MapPrior_files/bootstrap.min.js"></script>
+  <script src="./MapPrior_files/codemirror.min.js"></script>
+  <script src="./MapPrior_files/clipboard.min.js"></script>
+  <script src="./MapPrior_files/video_comparison.js"></script>
+  <script src="./MapPrior_files/select.js"></script>
+  <script src="./MapPrior_files/bulma-slider.min.js"></script>
+  <script src="./MapPrior_files/bulma-carousel.min.js"></script>
+  <!-- <script src="./MapPrior_files/app.js"></script> -->
+  <script src="./MapPrior_files/index.js"></script>
+  <!-- <script src="./MapPrior_files/slick.js"></script> -->
+
+</head>
+
+<body>
+  <div class="container" id="header" style="text-align: center; margin: auto;">
+    <div class="row" id="title-row" style="max-width: 100%; margin: 0 auto; display: inline-block">
+      <h2 class="col-md-12 text-center" id="title">
+        <b>MapPrior</b>: Bird's-Eye View Map Layout Estimation <br>with Generative Models<br>
+      </h2>
+      <h3 class="col-md-12 text-center" id="title">
+        <b>ICCV</b>2023<br>
+      </h3>
+    </div>
+  </div>
+  <script>
+  </script>
+  <div class="container" id="main">
+    <div class="row">
+      <div class="col-sm-10 col-sm-offset-1 text-center">
+        <ul class="list-inline">
+          <li> <a href="https://mapprior.github.io">Xiyue Zhu<sup>1</sup></a> </li>
+          <li> <a href="https://zyrianov.org/"> Vlas Zyrianov<sup>1</sup></a> </li>
+          <li> <a href="https://zhijianliu.com/">Zhijian Liu<sup>2</sup></a> </li>
+          <li> <a href="https://shenlong.web.illinois.edu/">Shenlong Wang<sup>1</sup></a> </li>
+        </ul>
+        <ul class="list-inline">
+          <li> <sup>1</sup>University of Illinois at Urbana-Champaign </li>
+          <li> <sup>2</sup>Massachusetts Institute of Technology </li>
+          <br />
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2 text-center">
+        <span class="link-block">
+          <a href="https://arxiv.org/abs/2308.12963" class="external-link button is-normal is-rounded is-dark">
+            <span class="icon">
+              <svg class="svg-inline--fa fa-file-pdf fa-w-12" aria-hidden="true" focusable="false" data-prefix="fas"
+                data-icon="file-pdf" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"
+                data-fa-i2svg="">
+                <path fill="currentColor"
+                  d="M181.9 256.1c-5-16-4.9-46.9-2-46.9 8.4 0 7.6 36.9 2 46.9zm-1.7 47.2c-7.7 20.2-17.3 43.3-28.4 62.7 18.3-7 39-17.2 62.9-21.9-12.7-9.6-24.9-23.4-34.5-40.8zM86.1 428.1c0 .8 13.2-5.4 34.9-40.2-6.7 6.3-29.1 24.5-34.9 40.2zM248 160h136v328c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V24C0 10.7 10.7 0 24 0h200v136c0 13.2 10.8 24 24 24zm-8 171.8c-20-12.2-33.3-29-42.7-53.8 4.5-18.5 11.6-46.6 6.2-64.2-4.7-29.4-42.4-26.5-47.8-6.8-5 18.3-.4 44.1 8.1 77-11.6 27.6-28.7 64.6-40.8 85.8-.1 0-.1.1-.2.1-27.1 13.9-73.6 44.5-54.5 68 5.6 6.9 16 10 21.5 10 17.9 0 35.7-18 61.1-61.8 25.8-8.5 54.1-19.1 79-23.2 21.7 11.8 47.1 19.5 64 19.5 29.2 0 31.2-32 19.7-43.4-13.9-13.6-54.3-9.7-73.6-7.2zM377 105L279 7c-4.5-4.5-10.6-7-17-7h-6v128h128v-6.1c0-6.3-2.5-12.4-7-16.9zm-74.1 255.3c4.1-2.7-2.5-11.9-42.8-9 37.1 15.8 42.8 9 42.8 9z">
+                </path>
+              </svg><!-- <i class="fas fa-file-pdf"></i> Font Awesome fontawesome.com -->
+            </span>
+            <span>Paper</span>
+          </a>
+        </span>
+        <span class="link-block">
+          <a href="https://github.com/xiyuez2/MapPrior" class="external-link button is-normal is-rounded is-dark">
+            <span class="icon">
+              <svg class="svg-inline--fa fa-github fa-w-16" aria-hidden="true" focusable="false" data-prefix="fab"
+                data-icon="github" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" data-fa-i2svg="">
+                <path fill="currentColor"
+                  d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z">
+                </path>
+              </svg><!-- <i class="fab fa-github"></i> Font Awesome fontawesome.com -->
+            </span>
+            <span>Code</span>
+          </a>
+        </span>
+      </div>
+    </div>
+
+
+    <!-- <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item">
+          <video poster="" id="garden-smog" autoplay controls muted loop playsinline height="100%">
+            <source src="./MapPrior_files/slider/garden_smog.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" id="playground-flood" autoplay controls muted loop playsinline height="100%">
+            <source src="./MapPrior_files/slider/playground_flood.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" id="train-snow" autoplay controls muted loop playsinline height="100%">
+            <source src="./MapPrior_files/slider/train_snow.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" id="truck-flood" autoplay controls muted loop playsinline height="100%">
+            <source src="./MapPrior_files/slider/truck_flood.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" id="garden-snow" autoplay controls muted loop playsinline height="100%">
+            <source src="./MapPrior_files/slider/garden_snow.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" id="kitti-flood" autoplay controls muted loop playsinline height="100%">
+            <source src="./MapPrior_files/slider/kitti_flood.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" id="kitti-snow" autoplay controls muted loop playsinline height="100%">
+            <source src="./MapPrior_files/slider/kitti_snow.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+
+    <!-- <div class="row">
+      <div class="col-sm-10 col-sm-offset-1 text-center">
+        <video id="garden-v1" width="600" playsinline="" autoplay="" loop="" muted=""
+          poster="MapPrior_files/loading.gif">
+          <source src="MapPrior_files/video/MapPrior.mp4" type="video/mp4">
+          <source src="MapPrior_files/video/L.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div> -->
+
+    <center>
+      <img src="./MapPrior_files/images/teaser.png" class="img-responsive" alt="overview" width="80%">
+    </center>
+
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <h3>
+          Abstract
+        </h3>
+        <div class="text-justify">
+
+          Despite tremendous advancements in bird's-eye view (BEV) perception, 
+          existing models fall short in generating realistic and coherent semantic map layouts, 
+          and they fail to account for uncertainties arising from partial sensor information 
+          (such as occlusion or limited coverage). In this work, we introduce <b>MapPrior</b>, 
+          a novel BEV perception framework that combines a traditional 
+          discriminative BEV perception model with a learned generative model for semantic map layouts. 
+          MapPrior delivers predictions with better <b>accuracy</b>, <b>realism</b> and <b>uncertainty awareness</b>. 
+          
+          <br/>
+          We evaluate our model on the large-scale nuScenes benchmark. 
+          At the time of submission, MapPrior outperforms the strongest competing method, with significantly improved MMD and ECE scores in camera- and LiDAR-based BEV perception.
+          Furthermore, our method can be used to perpetually generate layouts with unconditional sampling. 
+        </div>
+        
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <h3>
+          Bird's Eye View Map Estimation
+        </h3>
+        <p>
+          <font size="3" color="gray">
+            * You can select different <b>input modalities</b> on different <b>scenes</b> and compare
+            our method with baselines (BEVFuison).
+            <br />
+            <!-- * <b>3D stylization</b> denotes finetuning pre-trained NGP model using <a
+              href="https://github.com/NVIDIA/FastPhotoStyle">FastPhotoStyle</a>. -->
+          </font>
+        </p>
+
+        <center>
+          <div class="video-compare-container" id="ours" style="width: 50%">
+            <video class="video" id="simulation_video" loop="" playsinline="" autoplay="" muted=""
+              poster="MapPrior_files/loading.gif" src="MapPrior_files/ours/LiDAR_scene0.mp4"
+              onplay="resizeAndPlay(this)">
+
+            </video>
+            <canvas class="videoMerge" id="simulation_videoMerge"></canvas>
+          </div>
+          <video class="video" id="baseline" loop="" playsinline="" autoplay="" muted=""
+            poster="MapPrior_files/loading.gif" src="MapPrior_files/ours/LiDAR_scene0.mp4" style="width: 0%">
+          </video>
+
+          <h4>
+            Modality
+          </h4>
+          <ul class="nav nav-pills nav-justified" id="sim-view-ul" style="width: 60%">
+            <li role="presentation" class="active"><a href="javascript: void(0);" onclick="ChangeSim(0);">LiDAR</a>
+            </li>
+            <li role="presentation"><a href="javascript: void(0);" onclick="ChangeSim(1);">Camera</a></li>
+            <li role="presentation"><a href="javascript: void(0);" onclick="ChangeSim(2);">Both</a></li>
+          </ul>
+          <h4>
+            Scene
+          </h4>
+          <ul class="nav nav-pills nav-justified" id="scene-view-ul" style="width: 60%">
+            <li role="presentation" class="active"><a href="javascript: void(0);"
+                onclick="ChangeScene(0);">Scene0</a>
+            </li>
+            <li role="presentation"><a href="javascript: void(0);" onclick="ChangeScene(1);">Scene1</a>
+            </li>
+            <li role="presentation"><a href="javascript: void(0);" onclick="ChangeScene(2);">Scene2</a>
+            </li>
+            <li role="presentation"><a href="javascript: void(0);" onclick="ChangeScene(3);">Scene3</a>
+            <!-- </li>
+            <li role="presentation"><a href="javascript: void(0);" onclick="ChangeScene(4);">Scene4</a>
+            </li> -->
+            <!-- <br />
+            <li role="presentation"><a href="javascript: void(0);" onclick="ChangeScene(5);">Scene5</a>
+            </li>
+            <li role="presentation"><a href="javascript: void(0);" onclick="ChangeScene(6);">Scene6</a></li>
+            <li role="presentation"><a href="javascript: void(0);" onclick="ChangeScene(7);">Scene7</a></li>
+            <li role="presentation"><a href="javascript: void(0);" onclick="ChangeScene(8);">Scene8</a></li> -->
+          </ul>
+
+          <ul class="nav nav-pills nav-justified" id="method-view-ul" style="width: 60%">
+            <!-- <li role="presentation" class="active"><a href="javascript: void(0);" onclick="ChangeMethod(0);">Ours</a> -->
+            <!-- </li> -->
+
+            
+          </ul>
+        </center>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <h3>
+          Diversity Sampling
+        </h3>
+
+        <div class="text-justify">
+          Our method can sample multiple results per input with diversity, providing better uncertainty awareness:
+        </div>
+
+        <!-- <table width="100%">
+          <tbody>
+            <tr>
+              <td align="center" valign="top" width="33%">
+                <video id="v1" width="100%" playsinline="" autoplay="" loop="" muted=""
+                  poster="MapPrior_files/loading.gif">
+                  <source src="MapPrior_files/control/control_smog.mp4" type="video/mp4">
+                </video>
+              </td>
+              <td align="center" valign="top" width="33%">
+                <video id="v2" width="100%" playsinline="" autoplay="" loop="" muted=""
+                  poster="MapPrior_files/loading.gif">
+                  <source src="MapPrior_files/control/control_flood.mp4" type="video/mp4">
+                </video>
+              </td>
+              <td align="center" valign="top" width="33%">
+                <video id="v3" width="100%" playsinline="" autoplay="" loop="" muted=""
+                  poster="MapPrior_files/loading.gif">
+                  <source src="MapPrior_files/control/control_snow.mp4" type="video/mp4">
+                </video>
+              </td>
+            </tr>
+          </tbody>
+        </table> -->
+        <center>
+          <img src="./MapPrior_files/images/diverse.png" class="img-responsive" alt="overview" width="100%"
+            >
+        </center>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <h3>
+          perpetual Generation
+        </h3>
+
+        <div class="text-justify">
+          Our method can be exploited in a progressive manner to generate perpetual traffic layouts.
+        </div>
+
+        <center>
+          <img src="./MapPrior_files/video/uncond_video.gif" class="img-responsive" alt="perpetual" width="50%"
+            >
+        </center>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <h3>
+          Map Estimation using Generative Models
+        </h3>
+
+        <div class="text-justify">
+          MapPrior first makes use of an off-the-shelf perception model to generate an initial noisy estimate from the sensory
+input, which uses monocular depth estimation to project camera features to BEV. It then encodes the noisy
+estimate into a discrete latent code using a generative encoder and generates various samples through a transformer-based
+controlled synthesis. Finally, MapPrior decodes these samples into outputs with a decoder
+        </div>
+        <center>
+          <img src="./MapPrior_files/images/method.png" class="img-responsive" width="120%"
+            style="max-height: 450px;margin:auto;">
+        </center>
+      
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <h3>
+          Quantitative Results
+        </h3>
+        <div class="text-justify">
+          We show our quantitative metrics here. Our MapPrior achieves better accuracy (IoU), realism
+          (MMD) and uncertainty awareness (ECE) than discriminative BEV perception baselines.
+        </div>
+        <center> 
+          <img src="./MapPrior_files/images/metrics.png" class="img-responsive" alt="metrics" width="100%">
+        </center>
+      </div>
+    </div>
+<!-- 
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <h3>
+          References
+        </h3>
+        <ol>
+          <li>
+            Victor Schmidt, Alexandra Sasha Luccioni, M ́elisande Teng, Tianyu Zhang, Alexia Reynaud,
+            Sunand Raghupathi, Gautier Cosne,
+            Adrien Juraver, Vahe Vardanyan, Alex Hernandez-Garcia, Yoshua Bengio.
+            Climategan: Raising climate change awareness by generating images of floods. ICLR, 2022.
+            <a href="https://github.com/cc-ai/climategan">[code]</a>
+          </li>
+          <li>
+            Robin Rombach, Andreas Blattmann, Dominik Lorenz, Patrick Esser, and Bj ̈orn Ommer.
+            High-resolution image synthesis with latent diffusion models. In CVPR, 2022.
+            <a href="https://github.com/CompVis/stable-diffusion">[code]</a>
+          </li>
+          <li>
+            Taesung Park, Jun-Yan Zhu, Oliver Wang, Jingwan Lu, Eli Shechtman, Alexei Efros, and Richard
+            Zhang.
+            Swapping autoencoder for deep image manipulation. NeurIPS, 2020.
+            <a href="https://github.com/taesungp/swapping-autoencoder-pytorch">[code]</a>
+          </li>
+        </ol>
+      </div>
+    </div>
+     -->
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <h3>
+          Acknowledgements
+        </h3>
+
+        The website template was borrowed from <a href="http://mgharbi.com/">Michaël Gharbi</a>, and <A
+          href="https://climatenerf.github.io/">ClimateNeRF</a>.
+
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
